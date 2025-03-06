@@ -23,6 +23,17 @@ app.use(cors({
 // Body Parser
 app.use(express.json());
 
+// ルートパスへのアクセス
+app.get("/", (req, res) => {
+  res.json({ 
+    message: "Weight Management API is running",
+    endpoints: {
+      health: "/api/health",
+      weights: "/api/weights"
+    }
+  });
+});
+
 // 体重データのMongooseモデル
 const weightSchema = new mongoose.Schema({
   date: String,
